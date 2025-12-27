@@ -1,13 +1,13 @@
 ## やりたい
 
-- DTO（Data Transfer Object）とバリデーション
-  - class-validator
-  - class-transformer
-- テストコード
-- DB連携
 - ユーザー認証
+- DB連携
 
-## メモ：Serviceに書くこと
+## 参考
+
+- https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c
+
+## メモ：Controllerに書くこと
 
 - ルーティング定義
 - HTTP に関する処理
@@ -18,3 +18,11 @@
 
 - BFFのポート変更
 - エラー処理
+
+## 一旦保留
+
+- テストコード
+- DTO（Data Transfer Object）とバリデーション
+  - class-validator
+  - class-transformer
+    - class-transformer で Entity → DTO 変換
