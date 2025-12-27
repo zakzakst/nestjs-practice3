@@ -17,3 +17,7 @@ export type PostTodoRequest = {
   detail?: Todo['detail'];
   deadline?: Todo['deadline'];
 };
+
+export type PutTodoRequest = Partial<
+  Pick<Todo, 'title' | 'detail' | 'deadline' | 'status'>
+>;
