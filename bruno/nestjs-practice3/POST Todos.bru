@@ -1,0 +1,23 @@
+meta {
+  name: POST Todos
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/todos
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "書籍を買う",
+    "detail": "『こころ』"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "vitest.explorer",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "nuxtr.nuxt-vscode-extentions"
+  ]
+}
