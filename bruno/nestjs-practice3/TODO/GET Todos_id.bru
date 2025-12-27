@@ -1,19 +1,13 @@
 meta {
-  name: PUT Todo
+  name: Todos:id
   type: http
-  seq: 4
+  seq: 2
 }
 
-put {
+get {
   url: http://localhost:3001/todos/1
-  body: json
+  body: none
   auth: inherit
-}
-
-body:json {
-  {
-    "title": "更新タイトル"
-  }
 }
 
 settings {
