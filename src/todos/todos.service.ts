@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Todo, PostTodoRequest } from './todo.entity';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { Todo, PostTodoRequest, PutTodoRequest } from './todo.entity';
 
 @Injectable()
 export class TodosService {
@@ -25,22 +25,11 @@ export class TodosService {
 
   findOne(id: number): Todo {
     // TODO: エラー処理
-    const result = this.todos.find((todo) => todo.id === id);
-    return (
-      result || {
-        id: 99,
-        title: 'エラー',
-        detail: `
-            - 肉
-            - 人参
-            - 醤油
-        `,
-        deadline: '2025-12-31T03:04:30.155Z',
-        status: 'progress',
-        createdAt: '2025-12-25T03:04:30.155Z',
-        updatedAt: '2025-12-26T03:04:30.155Z',
-      }
-    );
+    const todo = this.todos.find((todo) => todo.id === id);
+    if (!todo) {
+      throw new NotFoundException(`Todo with id ${id} not found`);
+    }
+    return todo;
   }
 
   create(request: PostTodoRequest): Todo {
@@ -51,10 +40,37 @@ export class TodosService {
       detail: request.detail || null,
       deadline: request.deadline || null,
       status: 'planned',
-      createdAt: date.toDateString(),
-      updatedAt: date.toDateString(),
+      createdAt: date.toISOString(),
+      updatedAt: date.toISOString(),
     };
     this.todos.push(newTodo);
     return newTodo;
+  }
+
+  update(id: number, request: PutTodoRequest): Todo {
+    const todo = this.todos.find((t) => t.id === id);
+    const targetTodo = todo || {
+      id: 99,
+      title: 'エラー',
+      detail: `
+        - 肉
+        - 人参
+        - 醤油
+      `,
+      deadline: '2025-12-31T03:04:30.155Z',
+      status: 'progress',
+      createdAt: '2025-12-25T03:04:30.155Z',
+      updatedAt: '2025-12-26T03:04:30.155Z',
+    };
+    return {
+      ...targetTodo,
+      ...request,
+      updatedAt: new Date().toISOString(),
+    };
+  }
+
+  remove(id: number) {
+    this.todos = this.todos.filter((todo) => todo.id !== id);
+    return;
   }
 }
