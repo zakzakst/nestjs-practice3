@@ -1,0 +1,20 @@
+meta {
+  name: GET Me
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:3001/auth/me
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoic2FtcGxlQG1haWwuY29tIiwiaWF0IjoxNzY2OTAyNDkwLCJleHAiOjE3NjY5MDYwOTB9.t5vdIqd1xholCLAXVLe_E5MhX7_bPJ_uxLsPmi82LgQ
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -26,3 +26,5 @@
   - class-validator
   - class-transformer
     - class-transformer で Entity → DTO 変換
+- 各種envファイルで持ったほうがいい値を移動する
+- ChatGPTでの返答にあった「@Req() を使わずに書く方法（推奨）」
